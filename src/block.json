@@ -8,14 +8,45 @@
 	"icon": "flag",
 	"description": "A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.",
 	"attributes": {
-		"message": {
+		"title": {
+			"type":"string",
+			"source": "html",
+			"selector": "h1,h2,h3,h4"
+		},
+		"titleTag": {
 			"type": "string",
-			"source": "text",
-			"selector": "div"
+			"default": "h2"
+		},
+		"trialDays": {
+			"type": "string",
+			"source": "html",
+			"selector": "span"
+		},
+		"amount": {
+			"type": "string",
+			"default": "0"
+		},
+		"symbol": {
+			"type": "string",
+			"default": "$"
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"selectSize": {
+			"type": "string",
+			"default": "2rem"
+		},
+		"headerColor": {
+			"type": "string",
+			"default": "lightblue"
+		},
+		"toogleDeal":{
+			"type":"boolean",
+			"default":false
 		}
-	},
-	"supports": {
-		"html": false
 	},
 	"textdomain": "price-table",
 	"editorScript": "file:./index.js",

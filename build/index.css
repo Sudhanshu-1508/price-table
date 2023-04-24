@@ -1,1 +1,43 @@
-.wp-block-create-block-price-table{border:1px dotted red}.price-table-container{border:1px solid #101011;height:-moz-fit-content;height:fit-content;padding:10px;text-align:center;width:20rem}.price-table-container .price-table-days{display:block;margin-top:-45px}.price-table-container .price-table-deals{background-color:aqua;border:1px solid #101011;color:#fff;float:right;width:84px}.price-table-container .price-table-header{padding:1px}.price-table-container .block-editor-block-list__block{display:flex;justify-content:center}.parent{display:inline-flex;padding:5px}
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-price-table {
+  border: 1px dotted #f00;
+}
+
+.price-table-container {
+  width: 20rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+}
+.price-table-container .price-table-days {
+  margin-top: -45px;
+  display: block;
+}
+.price-table-container .price-table-deals {
+  border: 1px solid rgb(16, 16, 17);
+  background-color: rgb(15, 39, 39);
+  float: right;
+  color: white;
+  width: 84px;
+}
+.price-table-container .price-table-header {
+  padding: 1px;
+}
+.price-table-container .block-editor-block-list__block {
+  display: flex;
+  justify-content: center;
+}
+
+.parent {
+  display: inline-flex;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=index.css.map*/

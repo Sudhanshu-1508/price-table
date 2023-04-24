@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-components/
  */
-import { TextControl, PanelBody, ColorPalette, ToggleControl } from '@wordpress/components';
+import { TextControl, PanelBody, ColorPalette, ToggleControl, Button } from '@wordpress/components';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { TextControl, PanelBody, ColorPalette, ToggleControl } from '@wordpress/
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InnerBlocks, InspectorControls, RichText } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, InspectorControls, RichText, MediaUpload } from '@wordpress/block-editor';
 import './editor.scss';
 import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
@@ -21,6 +21,8 @@ import {
 import { MyFontSizePicker } from "./fontPicker";
 
 const ALLOWED_BLOCKS = ["core/button"];
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -37,18 +39,33 @@ export default function Edit({ attributes, setAttributes }) {
 	const {
 		title,
 		titleTag,
-		toogleDeal,
+		toggleDeal,
 		trialDays,
 		amount,
 		description,
 		symbol,
 		selectSize,
 		headerColor,
+		backgroundImage
 	} = attributes;
+
+	function onselectImage(newImage) {
+		setAttributes( { backgroundImage: newImage.sizes.full.url} )
+	}
 
 	return [
 		<InspectorControls style={{ marginBottom: "40px" }}>
-			<PanelBody title="Block Settings">
+			<PanelBody title="Background Image Settings">
+			<MediaUpload 
+				onSelect={ onselectImage }
+				value={ backgroundImage }
+				allowedTypes={ ALLOWED_MEDIA_TYPES }
+				render={ ( { open } ) => (
+					<Button onClick={ open }>Select Background Image</Button>
+				) }
+			/>
+			</PanelBody>
+			<PanelBody title="Price Settings">
 				<TextControl
 					label="Price Symbol"
 					value={symbol ? symbol : ""}
@@ -78,7 +95,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<ToggleGroupControlOption label="H4" value="h4" />
 				</ToggleGroupControl>
 			</PanelBody>
-			<PanelBody title={"Background Color Settings"}>
+		{/* 	<PanelBody title={"Background Color Settings"}>
 				<p>
 					<strong>Select header background color:</strong>
 				</p>
@@ -88,13 +105,29 @@ export default function Edit({ attributes, setAttributes }) {
 						setAttributes({ headerColor: newheaderColor })
 					}
 				/>
-			</PanelBody>
-		
-			
+			</PanelBody>	
+			*/}	
+			<PanelBody title={"Best Deal Settings"}>
+				<p>
+					<strong>Enable Best Deal</strong>
+				</p>
+				<ToggleControl
+					checked={toggleDeal}
+					label="Enable something"
+					onChange={() => setAttributes({ toggleDeal: !toggleDeal })}
+				/>
+			</PanelBody>	
 		</InspectorControls>,
-		<div className="parent">
-			<div className="price-table-container">
-				{toogleDeal && <div className="price-table-deals">Best Deal</div>}
+
+		<div className="parent"
+		style={ {
+			backgroundImage: `url(${backgroundImage})`,
+			backgroundSize: "cover",
+			backgroundPosition:"center",
+			backgroundRepeat:"no-repeat"
+		} }>
+			<div className="price-table-container">			
+			{toggleDeal && <div className="price-table-deals">Best Deal</div>}
 				<div
 					style={{ backgroundColor: headerColor }}
 					className="price-table-header"

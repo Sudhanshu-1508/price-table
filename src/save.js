@@ -24,17 +24,25 @@ export default function save( { attributes } ) {
 		titleTag,
 		trialDays,
 		amount,
-		toogleDeal,
+		toggleDeal,
 		description,
 		symbol,
 		selectSize,
 		headerColor,
+		backgroundImage
 	} = attributes;
 	
 	return (
-		<div className="parent">
+		<div className="parent" 
+			style={ {
+				backgroundImage: `url(${backgroundImage})`,
+				backgroundSize: "cover",
+				backgroundPosition:"center",
+				backgroundRepeat:"no-repeat"
+			} }
+		>
 		<div className="price-table-container">
-			{toogleDeal&&<div className="price-table-deals">Best Deal</div>}
+			{toggleDeal&&<div className="price-table-deals">Best Deal</div>}
 			<div
 				style={{ backgroundColor: headerColor }}
 				className="price-table-header"

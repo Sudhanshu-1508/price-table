@@ -4,7 +4,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText, InnerBlocks } from '@wordpress/block-editor';
+import { Card } from "@wordpress/components";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -18,6 +19,50 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save( { attributes } ) {
-	const blockProps = useBlockProps.save();
-	return <div { ...blockProps }>{ attributes.message }</div>;
+	const {
+		title,
+		titleTag,
+		trialDays,
+		amount,
+		toggleDeal,
+		description,
+		symbol,
+		selectSize,
+		headerColor,
+		backgroundImage
+	} = attributes;
+	
+	return (
+		<div className="parent" 
+			style={ {
+				backgroundImage: `url(${backgroundImage})`,
+				backgroundSize: "cover",
+				backgroundPosition:"center",
+				backgroundRepeat:"no-repeat"
+			} }
+		>
+		<div className="price-table-container">
+			{toggleDeal&&<div className="price-table-deals">Best Deal</div>}
+			<div
+				style={{ backgroundColor: headerColor }}
+				className="price-table-header"
+			>
+				<RichText.Content tagName={titleTag} value={title} />
+
+				<RichText.Content
+					tagName="span"
+					className="price-table-days"
+					value={trialDays}
+					style={{ textAlign: "center" }}
+				/>
+				<h2 style={{ fontSize: selectSize }}>{symbol + amount}</h2>
+
+			</div>
+			<div className="price-table-body">
+				<RichText.Content tagName="p" value={description} />
+			</div>
+			<InnerBlocks.Content />
+		</div>
+		</div>
+	);
 }

@@ -46,7 +46,8 @@ export default function Edit({ attributes, setAttributes }) {
 		symbol,
 		selectSize,
 		headerColor,
-		backgroundImage
+		backgroundImage,
+		toggleDealData
 	} = attributes;
 
 	function onselectImage(newImage) {
@@ -111,14 +112,18 @@ export default function Edit({ attributes, setAttributes }) {
 				<p>
 					<strong>Enable Best Deal</strong>
 				</p>
+				<TextControl 
+					label="Best Deal Title"
+					value={toggleDealData}
+					onChange={(newData) => setAttributes({ toggleDealData: newData })}
+				/>
 				<ToggleControl
 					checked={toggleDeal}
 					label="Enable something"
 					onChange={() => setAttributes({ toggleDeal: !toggleDeal })}
 				/>
-			</PanelBody>	
+			</PanelBody>
 		</InspectorControls>,
-
 		<div className="parent"
 		style={ {
 			backgroundImage: `url(${backgroundImage})`,
@@ -127,11 +132,11 @@ export default function Edit({ attributes, setAttributes }) {
 			backgroundRepeat:"no-repeat"
 		} }>
 			<div className="price-table-container">			
-			{toggleDeal && <div className="price-table-deals">Best Deal</div>}
-				<div
+			{toggleDeal && <div className="price-table-deals">{`${toggleDealData}`}</div>}
+			 	<div
 					style={{ backgroundColor: headerColor }}
 					className="price-table-header"
-				>
+				>	
 					<RichText
 						key="editable"
 						tagName={titleTag}
@@ -143,7 +148,7 @@ export default function Edit({ attributes, setAttributes }) {
 						key="editable"
 						tagName="span"
 						className="price-table-days"
-						placeholder="trail days"
+						placeholder="trial days"
 						value={trialDays}
 						style={{ textAlign: "center" }}
 						onChange={(value) => setAttributes({ trialDays: value })}

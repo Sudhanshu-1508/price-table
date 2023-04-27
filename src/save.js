@@ -29,7 +29,8 @@ export default function save( { attributes } ) {
 		symbol,
 		selectSize,
 		headerColor,
-		backgroundImage
+		backgroundImage,
+		toggleDealData
 	} = attributes;
 	
 	return (
@@ -42,7 +43,7 @@ export default function save( { attributes } ) {
 			} }
 		>
 		<div className="price-table-container">
-			{toggleDeal&&<div className="price-table-deals">Best Deal</div>}
+			{toggleDeal&&<div className="price-table-deals">{`${toggleDealData}`}</div>}
 			<div
 				style={{ backgroundColor: headerColor }}
 				className="price-table-header"

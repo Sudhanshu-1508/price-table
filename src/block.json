@@ -41,7 +41,7 @@
 		},
 		"headerColor": {
 			"type": "string",
-			"default": "lightblue"
+			"default": null
 		},
 		"toggleDeal":{
 			"type":"boolean",
@@ -50,6 +50,10 @@
 		"backgroundImage":{
 			"type":"string",
 			"default": null
+		},
+		"toggleDealData":{
+			"type":"string",
+			"default":null
 		}
 	},
 	"textdomain": "price-table",

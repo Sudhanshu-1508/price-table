@@ -41,13 +41,17 @@
     },
     "headerColor": {
       "type": "string",
-      "default": "lightblue"
+      "default": null
     },
     "toggleDeal": {
       "type": "boolean",
       "default": false
     },
     "backgroundImage": {
+      "type": "string",
+      "default": null
+    },
+    "toggleDealData": {
       "type": "string",
       "default": null
     }

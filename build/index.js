@@ -68,7 +68,8 @@ function Edit(_ref) {
     symbol,
     selectSize,
     headerColor,
-    backgroundImage
+    backgroundImage,
+    toggleDealData
   } = attributes;
   function onselectImage(newImage) {
     setAttributes({
@@ -136,7 +137,13 @@ function Edit(_ref) {
     value: "h4"
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: "Best Deal Settings"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Enable Best Deal")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Enable Best Deal")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+    label: "Best Deal Title",
+    value: toggleDealData,
+    onChange: newData => setAttributes({
+      toggleDealData: newData
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     checked: toggleDeal,
     label: "Enable something",
     onChange: () => setAttributes({
@@ -154,7 +161,7 @@ function Edit(_ref) {
     className: "price-table-container"
   }, toggleDeal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "price-table-deals"
-  }, "Best Deal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, `${toggleDealData}`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       backgroundColor: headerColor
     },
@@ -171,7 +178,7 @@ function Edit(_ref) {
     key: "editable",
     tagName: "span",
     className: "price-table-days",
-    placeholder: "trail days",
+    placeholder: "trial days",
     value: trialDays,
     style: {
       textAlign: "center"
@@ -363,7 +370,8 @@ function save(_ref) {
     symbol,
     selectSize,
     headerColor,
-    backgroundImage
+    backgroundImage,
+    toggleDealData
   } = attributes;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "parent",
@@ -377,7 +385,7 @@ function save(_ref) {
     className: "price-table-container"
   }, toggleDeal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "price-table-deals"
-  }, "Best Deal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, `${toggleDealData}`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       backgroundColor: headerColor
     },
@@ -486,7 +494,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/price-table","version":"0.1.0","title":"Price Table","category":"text","icon":"flag","description":"A Gutenberg Block for Price-table","attributes":{"title":{"type":"string","source":"html","selector":"h1,h2,h3,h4"},"titleTag":{"type":"string","default":"h2"},"trialDays":{"type":"string","source":"html","selector":"span"},"amount":{"type":"string","default":"0"},"symbol":{"type":"string","default":"$"},"description":{"type":"string","source":"html","selector":"p"},"selectSize":{"type":"string","default":"2rem"},"headerColor":{"type":"string","default":"lightblue"},"toggleDeal":{"type":"boolean","default":false},"backgroundImage":{"type":"string","default":null}},"textdomain":"price-table","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"create-block/price-table","version":"0.1.0","title":"Price Table","category":"text","icon":"flag","description":"A Gutenberg Block for Price-table","attributes":{"title":{"type":"string","source":"html","selector":"h1,h2,h3,h4"},"titleTag":{"type":"string","default":"h2"},"trialDays":{"type":"string","source":"html","selector":"span"},"amount":{"type":"string","default":"0"},"symbol":{"type":"string","default":"$"},"description":{"type":"string","source":"html","selector":"p"},"selectSize":{"type":"string","default":"2rem"},"headerColor":{"type":"string","default":null},"toggleDeal":{"type":"boolean","default":false},"backgroundImage":{"type":"string","default":null},"toggleDealData":{"type":"string","default":null}},"textdomain":"price-table","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

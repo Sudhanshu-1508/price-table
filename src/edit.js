@@ -109,25 +109,25 @@ export default function Edit({ attributes, setAttributes }) {
 			</PanelBody>	
 			*/}	
 			<PanelBody title={"Best Deal Settings"}>
-				<p>
-					<strong>Enable Best Deal</strong>
-				</p>
-				<TextControl 
-					label="Best Deal Title"
-					value={toggleDealData}
-					onChange={(newData) => setAttributes({ toggleDealData: newData })}
-				/>
-				<ToggleControl
-					checked={toggleDeal}
-					label="Enable something"
-					onChange={() => setAttributes({ toggleDeal: !toggleDeal })}
-				/>
+  			<ToggleControl
+    			checked={toggleDeal}
+    			label="Enable Best Deal"
+    			onChange={() => setAttributes({ toggleDeal: !toggleDeal })}
+ 			/>
+  			{toggleDeal && (
+    			<TextControl 
+      				label="Best Deal Title"
+      				value={toggleDealData}
+      				onChange={(newData) => setAttributes({ toggleDealData: newData })}
+    			/>
+  			)}
 			</PanelBody>
+
 		</InspectorControls>,
 		<div className="parent"
 		style={ {
 			backgroundImage: `url(${backgroundImage})`,
-			backgroundSize: "cover",
+			backgroundSize: "50%",
 			backgroundPosition:"center",
 			backgroundRepeat:"no-repeat"
 		} }>

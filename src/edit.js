@@ -125,17 +125,17 @@ export default function Edit({ attributes, setAttributes }) {
 
 		</InspectorControls>,
 		<div className="parent"
-		style={ {
-			backgroundImage: `url(${backgroundImage})`,
-			backgroundSize: "50%",
-			backgroundPosition:"center",
-			backgroundRepeat:"no-repeat"
-		} }>
+		>
 			<div className="price-table-container">			
 			{toggleDeal && <div className="price-table-deals">{`${toggleDealData}`}</div>}
 			 	<div
-					style={{ backgroundColor: headerColor }}
-					className="price-table-header"
+				className="price-table-header"
+				style={ {
+					backgroundImage: `url(${backgroundImage})`,
+					backgroundSize: "cover",
+					backgroundPosition:"center",
+					backgroundRepeat:"no-repeat"
+				} }					
 				>	
 					<RichText
 						key="editable"
